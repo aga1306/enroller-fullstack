@@ -27,37 +27,28 @@ public class Meeting {
     @Column
     private String date;
 
+    //@JsonIgnore
+//    @ManyToMany(mappedBy = "meetings")
+//    @JsonIgnore
     @JsonProperty(access = Access.READ_ONLY)
-    @ManyToMany(mappedBy = "meetings")
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "meeting_participant", joinColumns = {@JoinColumn(name = "meeting_id")}, inverseJoinColumns = {
+            @JoinColumn(name = "participant_login")})
     Set<Participant> participants = new HashSet<>();
 
-    public long getId() {
-        return id;
-    }
+    public long getId() { return id; }
 
-    public String getTitle() {
-        return title;
-    }
+    public String getTitle() { return title; }
 
-    public String getDescription() {
-        return description;
-    }
+    public String getDescription() { return description; }
 
-    public String getDate() {
-        return date;
-    }
+    public String getDate() { return date; }
 
-    public void setId(long id) {
-        this.id = id;
-    }
+    public void setId(long id) { this.id = id; }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    public void setTitle(String title) { this.title = title; }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    public void setDescription(String description) { this.description = description; }
 
     public void setDate(String date) {
         this.date = date;

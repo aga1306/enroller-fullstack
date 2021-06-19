@@ -24,7 +24,6 @@
     import LoginForm from "./LoginForm";
     import MeetingsPage from "./meetings/MeetingsPage";
     import Vue from "vue";
-
     export default {
         components: {LoginForm, MeetingsPage},
         data() {
@@ -32,7 +31,8 @@
                 authenticatedUsername: "",
                 registering: false,
                 message: '',
-                isError: false
+                isError: false,
+                meetings: []
             };
         },
         methods: {
@@ -91,7 +91,7 @@
                 return this.registering ? 'Zarejestruj się' : 'Zaloguj się';
             }
         }
-    };
+    }
 </script>
 
 <style>
@@ -99,11 +99,9 @@
     max-width: 1000px;
     margin: 0 auto;
   }
-
   .logo {
     vertical-align: middle;
   }
-
   .alert {
     padding: 10px;
     margin-bottom: 10px;
@@ -117,7 +115,6 @@
     background: indianred;
     border-color: darken(indianred, 10%);
     color: white;
-
   }
 </style>
 
